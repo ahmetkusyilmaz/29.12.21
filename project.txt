@@ -1,1 +1,17 @@
-cat event_history.csv | grep -i "serdar" | grep -i "terminate" | awk '/i-0c127ab5cdf997cf4/ {print} ' event_history.csv
+#!/bin/bash
+
+echo -e "Bu script 12.02.2022 tarihinde saat 18:00'da nightfighter grubu tarafindan yapilmiştir.\n"
+
+cat event_history.csv | grep -i "serdar" | grep -i "terminateinstance"  | awk -F'"' '{print $16}' | cat >> serdar.txt
+
+cat event_history.csv | grep -i "serdar" | grep -i "terminateinstance"  | awk -F'"' '{print $32}' | cat >> serdar.txt
+
+cat event_history.csv | grep -i "serdar" | grep -i "terminateinstance"  | awk -F'"' '{print $48}' | cat >> serdar.txt
+
+cat event_history.csv | grep -i "serdar" | grep -i "terminateinstance"  | awk -F'"' '{print $64}' | cat >> serdar.txt
+
+cat event_history.csv | grep -i "serdar" | grep -i "terminateinstance"  | awk -F'"' '{print $80}' | cat >> serdar.txt
+
+cat event_history.csv | grep -i "serdar" | grep -i "terminateinstance"  | awk -F'"' '{print $96}' | cat >> serdar.txt
+
+sort serdar.txt | uniq | tee serdar.txt
