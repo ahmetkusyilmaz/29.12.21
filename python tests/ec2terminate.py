@@ -1,3 +1,3 @@
 import boto3
 ec2 = boto3.resource('ec2')
-ec2.Instance('i-0f6490c4d57a609f5').terminate()
+ec2.Instance('i-0a820f56a36c4efa4').terminate()
