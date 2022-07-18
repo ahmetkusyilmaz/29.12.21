@@ -4,17 +4,19 @@ pipeline {
         stage('Build App Docker Image') {
             steps {
                 echo 'Building App Image'
-                sh """
+                sh '''
                 docker build --force-rm -t "hello-world-app" "${WORKSPACE}/tasks/docker-hello-world-app/app"
-                """
-                sh 'docker image ls'
+                docker image ls
+                '''
             }
         }
         stage('Deploy App'){
             steps {
                 echo 'Deploying App'
-                sh ". ./tasks/docker-hello-world-app/jenkins/build-image.sh"
-                sh "docker container ls"
+                sh '''
+                docker run -d --name hello-world-container -p 80:80 hello-world-app
+                docker ps -a
+                '''
             }
         }
     }

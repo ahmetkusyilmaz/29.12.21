@@ -6,8 +6,8 @@ pipeline {
                 echo 'Building App Image'
                 sh '''
                 docker build --force-rm -t "hello-world-app" "${WORKSPACE}/tasks/docker-hello-world-app/app"
+                docker image ls
                 '''
-                sh 'docker image ls'
             }
         }
         stage('Deploy App'){
