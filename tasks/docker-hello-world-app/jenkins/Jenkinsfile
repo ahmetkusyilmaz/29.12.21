@@ -1,6 +1,16 @@
 pipeline {
     agent any
     stages {
+        stage('Delete ex containers') {
+            steps {
+                echo 'Delete ex containers'
+                sh '''
+                docker stop hello-world-container
+                docker rm hello-world-container
+                docker image prune -af
+                '''
+            }
+        }
         stage('Build App Docker Image') {
             steps {
                 echo 'Building App Image'
