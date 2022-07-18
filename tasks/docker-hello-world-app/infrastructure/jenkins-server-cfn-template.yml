@@ -78,8 +78,6 @@ Resources:
           hostnamectl set-hostname jenkins-server
           # install git
           yum install git -y
-          # install java 11
-          yum install java-11-amazon-corretto -y
           # install jenkins
           wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat/jenkins.repo
           rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
@@ -112,15 +110,8 @@ Resources:
           ./aws/install
           # install python 3
           yum install python3 -y
-          # install ansible
-          pip3 install ansible
           # install boto3
           pip3 install boto3
-          # install terraform
-          yum install -y yum-utils
-          yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
-          yum -y install terraform
-          
 Outputs:
   JenkinsDNS:
     Description: Jenkins Server DNS Name 
