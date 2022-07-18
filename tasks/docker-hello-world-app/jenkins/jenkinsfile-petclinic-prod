@@ -13,7 +13,7 @@ pipeline {
         stage('Deploy App'){
             steps {
                 echo 'Deploying App'
-                sh "docker run -d --name hello-world-container -p 80:80 hello-world-app"
+                sh ". ./tasks/docker-hello-world-app/jenkins/build-image.sh"
                 sh "docker container ls"
             }
         }
