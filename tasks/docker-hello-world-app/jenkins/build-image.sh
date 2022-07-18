@@ -1,1 +1,0 @@
-docker run -d --name hello-world-container -p 80:80 hello-world-app
