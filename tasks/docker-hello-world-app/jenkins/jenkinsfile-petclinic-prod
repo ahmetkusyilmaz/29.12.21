@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build App Docker Image') {
+            steps {
+                echo 'Building App Image'
+                sh """docker build --force-rm -t "hello-world-app" "${WORKSPACE}/tasks/docker-hello-world-app/app""""
+                sh 'docker image ls'
+            }
+        }
+        stage('Deploy App'){
+            steps {
+                echo 'Deploying App'
+                sh "docker run -d --name hello-world-container -p 80:80 hello-world-app"
+                sh "docker container ls"
+            }
+        }
+    }
+    post {
+        always {
+            echo 'Deleting all local images'
+            sh 'docker image prune -af'
+        }
+    }
+}
