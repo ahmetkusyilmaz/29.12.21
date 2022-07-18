@@ -5,8 +5,8 @@ pipeline {
             steps {
                 echo 'Delete ex containers'
                 sh '''
-                docker stop hello-world-container
-                docker rm hello-world-container
+                docker stop hello-world-container || true
+                docker rm hello-world-container || true
                 docker image prune -af
                 '''
             }
